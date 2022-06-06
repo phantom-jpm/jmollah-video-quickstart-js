@@ -22,6 +22,7 @@
           </li>
         </ul>
         <button class="btn btn-outline-primary" id="leave-room">Leave Room</button>
+        <!-- <button class="btn btn-outline-primary" id="start-sharing">Start Sharing Screen</button> -->
       </div>
     </nav>
     <div class="container-fluid">
@@ -29,10 +30,92 @@
         <div id="participants" class="col-xs-12 col-sm-3 col-md-2" style="text-align: center"></div>
         <div id="active-participant" class="col-xs-12 col-sm-9 col-md-10" style="text-align: center">
           <div class="participant main">
-            <video autoplay playsinline muted></video>
+            <video autoplay playsinline muted id="videoinputpreview"></video>
           </div>
         </div>
       </div>
+
+
+      <!-- This is snapshot example -->
+      <!-- <div class="col-sm-6">
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title">Local Video</h4>
+            <video id="videoinputpreview" style="height: auto;" autoplay></video> -->
+            <button id="takesnapshot" class="btn btn-primary btn-block">Take Snapshot</button>
+          <!-- </div>
+        </div> -->
+        <div class="card">
+        
+          <!-- This is snapshot example -->
+
+          <div class="card-block">
+            <h4 class="card-title">Snapshot</h4>
+            <canvas class="snapshot-canvas hidden" id="snapcan"></canvas>
+            <img class="snapshot-img hidden"></img>
+          </div>
+      <!-- snapshot example ends######## -->
+
+          <!--  Screen share example-->
+
+          <div class="card-block">
+            <h4 class="card-title">Local Screen</h4>
+            <div id="screenshare" class="card-body">
+              <video id="screenpreview" autoplay></video>
+              <button id="capturescreen" class="btn btn-primary btn-block">Capture Screen</button>
+              <button id="stopscreencapture" class="btn btn-primary btn-block">Stop Screen Capture</button>
+            </div>
+          </div>
+          <div class="card-block">
+            <h4 class="card-title">Remote Screen</h4>
+            <div id="screenshare" class="card-body">
+              <video id="screenpreview" class="remote-screenpreview" autoplay></video>
+            </div>
+          </div>
+      <!-- Screen share ends####### -->
+
+
+      <!-- Participant States Example starte -->
+
+      <div class="card-block">
+        <h4 class="card-title">Local View</h4>
+        <div class="card-body">
+          <div id="p1-media"></div>
+          <button id="p1-simulate-reconnection" class="btn btn-primary btn-block">Simulate Reconnection</button>
+          <!-- <h5>State</h5>
+          <div id="p1">
+            <div class="roomstate connected current">Connected</div>
+            <div class="roomstate reconnecting">Reconnecting</div>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="card-block">
+        <h4 class="card-title">Remote View</h4>
+        <div class="card-body">
+          <div id="p2-media"></div>
+          <button id="p2-simulate-reconnection" class="btn btn-primary btn-block">Simulate Reconnection</button>
+          <br> <br>
+          <h5>State Changing for local and remote depending on what you click</h5>
+          <div id="p1">
+            <div class="roomstate connected current">Connected</div>
+            <div class="roomstate reconnecting">Reconnecting</div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Participant States ENDS########-->
+
+        </div>
+      </div>
+      
+
+
+
+    
+
+      
       <div id="modals">
         <div class="modal fade" id="select-mic" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="select-mic-label" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -94,6 +177,7 @@
                 <div class="alert alert-warning" role="alert">
                 </div>
               </div>
+
               <div class="modal-footer">
                 <button type="button" class="btn btn-dark">Change Microphone and Camera</button>
                 <button type="button" class="btn btn-primary">Join</button>
